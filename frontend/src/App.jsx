@@ -13,6 +13,8 @@ import ProfilePage from "./pages/ProfilePage";
 import CreateCourse from "./Components/CreateCourse";
 import AdminDashboard from "./pages/AdminDashbaord";
 import { API_URL } from "./constants";
+import Quiz from "./pages/Quiz";
+import CertificateTemplate from "./Components/Quiz/CertificateTemplate";
 
 // Function to check if the user is logged in (you can modify this logic if needed)
 const checkUserStatus = async (dispatch) => {
@@ -44,7 +46,9 @@ function App() {
         <Route path="/courses" element={user ? <CoursePage user={user} /> : <Navigate to="/login" />} />
         <Route path="/courses/:id" element={user ? <CourseDetail user={user} /> : <Navigate to="/login" />} />
         <Route path="/profile" element={user ? <ProfilePage user={user} /> : <Navigate to="/login" />} />
-        <Route path="/admin/dashboard" element={user && user.role === 'admin' ? <AdminDashboard /> : <Navigate to="/login" />} />
+        <Route path="/admin/dashboard" element={user && user.role === 'admin' ? <AdminDashboard  user={user} /> : <Navigate to="/login" />} />
+        <Route path="/quiz" element={user  ? <Quiz  user={user} /> : <Navigate to="/login" />} />
+        <Route path="/contact" element={user ? <CertificateTemplate  user={user} /> : <Navigate to="/login" />} />
       </Routes>
       <Footer />
     </>

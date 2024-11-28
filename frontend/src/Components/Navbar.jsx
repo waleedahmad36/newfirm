@@ -38,7 +38,7 @@ const Navbar = () => {
                 <div className='gap-8 items-center text-lg font-medium hidden lg:flex'>
                     <Link to="/" className='hover:text-red-600'>Home</Link>
                     <Link to="/courses" className='hover:text-red-600'>Courses</Link>
-                    <Link to="/about" className='hover:text-red-600'>About</Link>
+                    <Link to="/quiz" className='hover:text-red-600'>About</Link>
                     <Link to="/contact" className='hover:text-red-600'>Contact</Link>
                 </div>
 

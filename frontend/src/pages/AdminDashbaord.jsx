@@ -3,7 +3,8 @@ import { FaUsers, FaBook } from 'react-icons/fa'; // Import icons for Users and 
 import axios from 'axios';
 import { useGetAllCoursesQuery } from '../features/api/courseApi';
 import { API_URL } from '../constants';
-const AdminDashboard = () => {
+import CreateQuiz from '../Components/Quiz/CreateQuiz';
+const AdminDashboard = ({user}) => {
   const [users, setUsers] = useState([]);
   const [selectedTab, setSelectedTab] = useState('users');
   const [loading, setLoading] = useState(false);
@@ -57,6 +58,14 @@ const AdminDashboard = () => {
               <FaBook className="text-2xl group-hover:text-red-600" />
               <span className="hidden group-hover:block text-xl">Courses</span>
             </div>
+
+            <div
+    className="group flex items-center space-x-4 px-4 py-2 rounded-md hover:bg-gray-700 cursor-pointer"
+    onClick={() => setSelectedTab('createQuiz')}
+  >
+    <FaBook className="text-2xl group-hover:text-red-600" />
+    <span className="hidden group-hover:block text-xl">Create Quiz</span>
+  </div>
           </div>
         </div>
       </div>
@@ -161,6 +170,11 @@ const AdminDashboard = () => {
             )}
           </div>
         )}
+
+
+{selectedTab === 'createQuiz' && (
+  <CreateQuiz  user={user}  />  // Render CreateQuiz component when 'Create Quiz' tab is selected
+)}
       </div>
     </div>
   );
